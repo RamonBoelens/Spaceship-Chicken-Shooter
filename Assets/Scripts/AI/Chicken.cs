@@ -72,7 +72,7 @@ public class Chicken : MonoBehaviour
 
     #endregion
 
-    private int thrust = 20;
+    private int thrust = 10;
     private float rotationSpeed = 2.0f;
 
     private void ThrustForward(int timeInFrames)

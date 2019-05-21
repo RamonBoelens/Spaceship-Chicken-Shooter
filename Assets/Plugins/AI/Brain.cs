@@ -14,7 +14,7 @@ public class Brain : BrainBase
     {
         lastData = data;
 
-        /*
+        
         if (moveForward == true)
         {
             lastData.ThrustForward(1);
@@ -31,6 +31,6 @@ public class Brain : BrainBase
 
         lastData.LookAt(data.targets[0]);
         lastData.MoveTo(data.targets[0]);
-        */
+        
     }
 }
