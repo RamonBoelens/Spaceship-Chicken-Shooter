@@ -65,9 +65,11 @@
     <Compile Include="Assets\_Rando Tut\Plugins\AI\BrainBaseRando.cs" />
     <Compile Include="Assets\_Rando Tut\Plugins\AI\BrainLuuk.cs" />
     <Compile Include="Assets\_Rando Tut\Scripts\AI\Robot.cs" />
+    <Compile Include="Assets\Asteriod.cs" />
     <Compile Include="Assets\MultipleTargetCamera.cs" />
     <Compile Include="Assets\Scripts\AI\Chicken.cs" />
     <Compile Include="Assets\Scripts\PushForward.cs" />
+    <Compile Include="Assets\Scripts\TopDownCamera.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/GitHub Stuff/Spaceship-Chicken-Shooter/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
