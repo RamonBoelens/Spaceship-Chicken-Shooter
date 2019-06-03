@@ -23,6 +23,8 @@ public struct BrainData
     public Action<bool, int> Rotate;
     public Action<Target> LookAt;
     public Action<Target> MoveTo;
+    public Action<Target> LookAway;
+    public Action<Target> BackOff;
 
     // Information about the chickens
     public Target me;
@@ -34,4 +36,5 @@ public struct Target
     public Vector3 position;
     public Quaternion rotation;
     public bool alive;
+    public int health;
 }

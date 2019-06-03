@@ -18,16 +18,24 @@ public class Chicken : MonoBehaviour
     private BrainData data;
 
     public bool IsAlive { get; private set; }
+    public int health { get; private set; }
+    public Weapon currentWeapon { get; private set; } 
 
     private void Start()
     {
         IsAlive = true;
+        health = 100;
+        
 
         rb = GetComponent<Rigidbody>();
+
+        // Actions
         data.ThrustForward = ThrustForward;
         data.Rotate = Rotate;
         data.LookAt = LookAt;
+        data.LookAway = LookAway;
         data.MoveTo = MoveTo;
+        data.BackOff = BackOff;
     }
 
     public void Update()
@@ -61,7 +69,8 @@ public class Chicken : MonoBehaviour
         {
             position = chicken.transform.position,
             rotation = chicken.transform.rotation,
-            alive = chicken.IsAlive
+            alive = chicken.IsAlive,
+            health = chicken.health
         };
     }
 
@@ -110,6 +119,18 @@ public class Chicken : MonoBehaviour
 
         transform.rotation = Quaternion.LookRotation(newDir);
     }
+    
+    private void LookAway(Target target)
+    {
+        Vector3 targetDir = target.position - transform.position;
+
+        float step = rotationSpeed * Time.deltaTime;
+
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, -targetDir, step, 0.0f);
+        Debug.DrawRay(transform.position, newDir, Color.red);
+
+        transform.rotation = Quaternion.LookRotation(newDir);
+    }
 
     private void MoveTo(Target target)
     {
@@ -122,5 +143,11 @@ public class Chicken : MonoBehaviour
         }
 
         rb.AddForce(transform.forward * thrust);
+    }
+
+    private void BackOff(Target target)
+    {
+        LookAway(target);
+        ThrustForward(1);
     }
 }

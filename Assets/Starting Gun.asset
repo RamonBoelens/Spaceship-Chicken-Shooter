@@ -9,6 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 089c5a16e80a8444cb783560f21f3f1a, type: 3}
-  m_Name: BrainLuuk
+  m_Script: {fileID: 11500000, guid: 6bd2b5411edb029408ae8f3491b99c56, type: 3}
+  m_Name: Starting Gun
   m_EditorClassIdentifier: 
+  WeaponName: Starting Gun
+  FireRate: 1
+  Damage: 10
+  BulletSpread: 0

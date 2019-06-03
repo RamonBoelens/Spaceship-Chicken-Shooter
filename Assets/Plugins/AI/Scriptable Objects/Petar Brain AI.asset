@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ad8414c7134c04092e53c1e0daf47d, type: 3}
-  m_Name: Ramon Brain AI
+  m_Script: {fileID: 11500000, guid: 434dcd89f84404a40bc5a24800401246, type: 3}
+  m_Name: Petar Brain AI
   m_EditorClassIdentifier: 

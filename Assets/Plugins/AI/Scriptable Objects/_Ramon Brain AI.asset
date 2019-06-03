@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee91b9203a7141648a2e532d3c78b891, type: 3}
-  m_Name: New Test Brain
+  m_Script: {fileID: 11500000, guid: 31ad8414c7134c04092e53c1e0daf47d, type: 3}
+  m_Name: _Ramon Brain AI
   m_EditorClassIdentifier: 

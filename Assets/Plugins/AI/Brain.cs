@@ -12,6 +12,19 @@ public class Brain : BrainBase
 
     public override void UpdateData(BrainData data)
     {
+        /*
+         * Actions Avaliable:
+         * 
+           
+            public Action<int> ThrustForward;
+            public Action<bool, int> Rotate;
+            public Action<Target> LookAt;
+            public Action<Target> MoveTo;
+            public Action<Target> LookAway;
+            public Action<Target> BackOff;
+         */
+
+
         lastData = data;
 
         /*
@@ -32,5 +45,16 @@ public class Brain : BrainBase
         lastData.LookAt(data.targets[0]);
         lastData.MoveTo(data.targets[0]);
         */
+
+        if (Vector3.Distance(data.me.position, data.targets[0].position) > 4.0f)
+        {
+            lastData.LookAt(data.targets[0]);
+
+            lastData.MoveTo(data.targets[0]);
+        }
+        else
+        {
+            lastData.BackOff(data.targets[0]);
+        }
     }
 }
