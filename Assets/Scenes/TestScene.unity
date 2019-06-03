@@ -487,6 +487,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brain: {fileID: 11400000, guid: e8355e6f99e58ae41aaa943e90dadf7d, type: 2}
+  availableWeapons:
+  - {fileID: 11400000, guid: 34cd6ecec04f8c241beeb9be24d25ae7, type: 2}
 --- !u!54 &777154554
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -701,6 +703,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brain: {fileID: 11400000, guid: da6465a9ba483c04181312d998b75f57, type: 2}
+  availableWeapons:
+  - {fileID: 11400000, guid: 34cd6ecec04f8c241beeb9be24d25ae7, type: 2}
 --- !u!54 &1520921675
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -913,6 +917,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brain: {fileID: 11400000, guid: 2d771f135e66b234a8f2db9cd54dcab0, type: 2}
+  availableWeapons:
+  - {fileID: 11400000, guid: 34cd6ecec04f8c241beeb9be24d25ae7, type: 2}
 --- !u!1 &1880064242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,6 +1044,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brain: {fileID: 11400000, guid: c86f76059ab3f3141a958dc3b3bcfc3a, type: 2}
+  availableWeapons:
+  - {fileID: 11400000, guid: 34cd6ecec04f8c241beeb9be24d25ae7, type: 2}
 --- !u!54 &1987241249
 Rigidbody:
   m_ObjectHideFlags: 0

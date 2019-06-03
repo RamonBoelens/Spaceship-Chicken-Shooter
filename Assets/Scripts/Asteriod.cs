@@ -17,13 +17,14 @@ public class Asteriod : MonoBehaviour
         {
             asteriodManager.instance.Unroll(this);
             Destroy(gameObject);
-
         }
-        else if (other.tag == "Asteriods")
-        {
-            this.transform.rotation = Random.rotation;
-        }
-
-
 	}
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Asteroids")
+        {
+            transform.rotation = Random.rotation;
+        }
+    }
 }

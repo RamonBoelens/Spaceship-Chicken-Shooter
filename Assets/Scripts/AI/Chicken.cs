@@ -19,15 +19,18 @@ public class Chicken : MonoBehaviour
 
     public bool IsAlive { get; private set; }
     public int health { get; private set; }
-    public Weapon currentWeapon { get; private set; } 
+
+    public List<Weapon> availableWeapons;
+    public Weapon currentWeapon { get; private set; }
+
 
     private void Start()
     {
         IsAlive = true;
         health = 100;
-        
 
         rb = GetComponent<Rigidbody>();
+        currentWeapon = availableWeapons[0];
 
         // Actions
         data.ThrustForward = ThrustForward;
@@ -36,6 +39,7 @@ public class Chicken : MonoBehaviour
         data.LookAway = LookAway;
         data.MoveTo = MoveTo;
         data.BackOff = BackOff;
+        data.Shoot = Shoot;
     }
 
     public void Update()
@@ -149,5 +153,10 @@ public class Chicken : MonoBehaviour
     {
         LookAway(target);
         ThrustForward(1);
+    }
+
+    private void Shoot(bool usePrimary)
+    {
+        currentWeapon.Shoot(transform.position);
     }
 }

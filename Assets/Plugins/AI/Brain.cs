@@ -51,6 +51,8 @@ public class Brain : BrainBase
             lastData.LookAt(data.targets[0]);
 
             lastData.MoveTo(data.targets[0]);
+
+            lastData.Shoot(true);
         }
         else
         {
