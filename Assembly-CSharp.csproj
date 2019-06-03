@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Asteriod.cs" />
     <Compile Include="Assets\Scripts\asteriodManager.cs" />
     <Compile Include="Assets\Scripts\PushForward.cs" />
+    <Compile Include="Assets\Scripts\SfxManager.cs" />
     <Compile Include="Assets\Scripts\TopDownCamera.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
     <Reference Include="Unity.Timeline.Editor">
