@@ -6,14 +6,14 @@ public class PushForward : MonoBehaviour
 {
 
     private Rigidbody rb;
-    public float thrust = 20;
+    public float thrust = 100;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
 
-        StartCoroutine(GiveForce(5));
+        StartCoroutine(GiveForce(200));
     }
 
     // Pushes the object forward for a certain amount of frames
@@ -22,7 +22,7 @@ public class PushForward : MonoBehaviour
         int i = 0;
         while (i < frames)
         {
-            rb.AddForce(transform.up * thrust);
+            rb.AddForce(transform.forward * thrust);
 
             Debug.Log($"Waiting for i: {i}");
             i++;

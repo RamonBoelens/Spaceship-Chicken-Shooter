@@ -27,7 +27,7 @@ public class Brain : BrainBase
 
         lastData = data;
 
-        /*
+        
         if (moveForward == true)
         {
             lastData.ThrustForward(1);
@@ -44,17 +44,4 @@ public class Brain : BrainBase
 
         lastData.LookAt(data.targets[0]);
         lastData.MoveTo(data.targets[0]);
-        */
 
-        if (Vector3.Distance(data.me.position, data.targets[0].position) > 4.0f)
-        {
-            lastData.LookAt(data.targets[0]);
-
-            lastData.MoveTo(data.targets[0]);
-        }
-        else
-        {
-            lastData.BackOff(data.targets[0]);
-        }
-    }
-}
