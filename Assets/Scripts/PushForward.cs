@@ -24,7 +24,6 @@ public class PushForward : MonoBehaviour
         {
             rb.AddForce(transform.up * thrust);
 
-            Debug.Log($"Waiting for i: {i}");
             i++;
             yield return 0;
         }
