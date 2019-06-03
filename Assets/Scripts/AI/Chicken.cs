@@ -81,7 +81,7 @@ public class Chicken : MonoBehaviour
 
     #endregion
 
-    private int thrust = 15;
+    private int thrust = 20;
     private float rotationSpeed = 2.0f;
 
     private void ThrustForward(int timeInFrames)
@@ -99,12 +99,12 @@ public class Chicken : MonoBehaviour
         if (rotateClockwise)
         {
             transform.Rotate(new Vector3 (0, degrees, 0));
-            //Debug.Log($"Rotating clockwise with {degrees} degrees.");
+            Debug.Log($"Rotating clockwise with {degrees} degrees.");
         }
         else
         {
             transform.Rotate(new Vector3(0, -degrees, 0));
-            //Debug.Log($"Rotating counter clockwise with {degrees} degrees.");
+            Debug.Log($"Rotating counter clockwise with {degrees} degrees.");
         }
     }
 
@@ -138,7 +138,7 @@ public class Chicken : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.position) < 0.001f)
         {
-            //Debug.Log("At Position");
+            Debug.Log("At Position");
             return;
         }
 

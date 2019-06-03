@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class MultipleTargetCamera : MonoBehaviour
 {
-    public List<Transform> target;
+    public List<Transform> targets;
     public Vector3 offset;
 
     public float smoothTime = .5f;
@@ -23,7 +23,7 @@ public class MultipleTargetCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (target.Count == 0)
+        if (targets.Count == 0)
             return;
 
         Move();
@@ -46,13 +46,13 @@ public class MultipleTargetCamera : MonoBehaviour
 
     private Vector3 GetCenterPoint()
     {
-        if (target.Count == 1)
-            return target[0].position;
+        if (targets.Count == 1)
+            return targets[0].position;
 
-        var bounds = new Bounds(target[0].position, Vector3.zero);
-        for (int i = 0; i < target.Count; i++)
+        var bounds = new Bounds(targets[0].position, Vector3.zero);
+        for (int i = 0; i < targets.Count; i++)
         {
-            bounds.Encapsulate(target[i].position);
+            bounds.Encapsulate(targets[i].position);
         }
 
         return bounds.center;
@@ -60,10 +60,10 @@ public class MultipleTargetCamera : MonoBehaviour
 
     private float GetGreatestDistance()
     {
-        var bounds = new Bounds(target[0].position, Vector3.zero);
-        for (int i = 0; i < target.Count; i++)
+        var bounds = new Bounds(targets[0].position, Vector3.zero);
+        for (int i = 0; i < targets.Count; i++)
         {
-            bounds.Encapsulate(target[i].position);
+            bounds.Encapsulate(targets[i].position);
         }
 
         return bounds.size.x;
