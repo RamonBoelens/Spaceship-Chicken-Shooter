@@ -21,31 +21,41 @@ public class PetarBrain : BrainBase
 		int timeToSwitch = 20 + currentTime;
 
 
-		void StartLookingForEnemy()
-		{	
-			
-			lastData.LookAt(lastData.targets[enemy]);
-		}
-
-
-		
-
-
-		if (Vector3.Distance(data.me.position, data.targets[enemy].position) > 4f)
+		void PhaseOne()
 		{
 			lastData.MoveTo(lastData.targets[enemy]);
 			lastData.Shoot(true);
-		} else if (Vector3.Distance(data.me.position, data.targets[enemy].position) < 4f)
+		}
+
+
+
+
+
+		if (Vector3.Distance(data.me.position, data.targets[enemy].position) > 6f && data.me.health > 40)
+		{
+			lastData.LookAt(lastData.targets[enemy]);
+			//lastData.ThrustForward(2);
+			lastData.Shoot(true);
+
+
+		}
+		else if (Vector3.Distance(data.me.position, data.targets[enemy].position) < 6f && data.me.health > 40)
 		{
 			lastData.Shoot(false);
 			lastData.LookAway(lastData.targets[enemy]);
-			lastData.ThrustForward(3);
+			lastData.ThrustForward(100);
+			Debug.Log("Going backwards)");
+		}
+		else if (Vector3.Distance(data.me.position, data.targets[enemy].position) < 2f && data.me.health > 40)
+		{
+			lastData.Shoot(false);
+			lastData.LookAway(lastData.targets[enemy]);
+			lastData.ThrustForward(200);
 		}
 
 		
-		
 
-		if (Time.time >= timeToSwitch)
+			if (Time.time >= timeToSwitch)
 		{
 			enemy = enemy + 1;
 			currentTime = (int) Time.time;
