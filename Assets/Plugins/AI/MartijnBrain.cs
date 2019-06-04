@@ -22,7 +22,7 @@ public class MartijnBrain : BrainBase
             public Action<Target> BackOff;
          */
         lastData = data;
-        //lastData.ThrustForward(1);
+        lastData.ThrustForward(1);
         lastData.targets.OrderBy(t => t.health);
 
         if (lastData.targets[0].position == lastData.me.position)
@@ -39,6 +39,21 @@ public class MartijnBrain : BrainBase
          if (lastData.me.health < 25)
         {
             lastData.BackOff(lastData.targets[0]);
+        }
+
+        if (lastData.targets[0].position == lastData.me.position)
+            {
+            if (Vector3.Distance(data.me.position, data.targets[1].position) < 10.0f)
+                {
+                lastData.Shoot(true);
+                }
+            }
+        if (lastData.targets[0].position != lastData.me.position)
+        {
+            if (Vector3.Distance(data.me.position, data.targets[0].position) < 10.0f)
+            {
+                lastData.Shoot(true);
+            }
         }
 
     }
