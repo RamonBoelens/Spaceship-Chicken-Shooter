@@ -25,6 +25,7 @@ public class Chicken : MonoBehaviour
     public GameObject BulletSpawnPoint;
 
     private float cooldown = 1.0f;
+    private Vector3 spawnLocation;
 
 
     private void Start()
@@ -43,6 +44,10 @@ public class Chicken : MonoBehaviour
         data.MoveTo = MoveTo;
         data.BackOff = BackOff;
         data.Shoot = Shoot;
+
+        GameManager.instance.AssignChickens(this);
+
+        SetSpawnLocation();
     }
 
     public void Update()
@@ -108,12 +113,10 @@ public class Chicken : MonoBehaviour
         if (rotateClockwise)
         {
             transform.Rotate(new Vector3 (0, degrees, 0));
-            Debug.Log($"Rotating clockwise with {degrees} degrees.");
         }
         else
         {
             transform.Rotate(new Vector3(0, -degrees, 0));
-            Debug.Log($"Rotating counter clockwise with {degrees} degrees.");
         }
     }
 
@@ -147,7 +150,6 @@ public class Chicken : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.position) < 0.001f)
         {
-            Debug.Log("At Position");
             return;
         }
 
@@ -167,5 +169,32 @@ public class Chicken : MonoBehaviour
             currentWeapon.Shoot(transform, BulletSpawnPoint);
             cooldown = currentWeapon.FireRate;
         }
+    }
+
+    public void DamageChicken(int damage)
+    {
+
+        health -= damage;
+
+        if (health <= 0)
+        {
+            transform.position = spawnLocation;
+            health = 100;
+            SfxManager.instance.PlaySound(SfxManager.instance.Death);
+        }
+        else
+        {
+            int rand = Random.Range(0, 1);
+
+            if (rand == 0)
+                SfxManager.instance.PlaySound(SfxManager.instance.Hit);
+            else
+                SfxManager.instance.PlaySound(SfxManager.instance.Hit2);
+        }
+    }
+
+    private void SetSpawnLocation()
+    {
+        spawnLocation = transform.position;
     }
 }

@@ -39,11 +39,26 @@ public class SfxManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Update()
+    {
+        PlayRandomChickenSound();
+    }
 
     //Play sound function. Only has one sound!
     public void PlaySound(AudioSource sound)
     {
         sound.pitch = Random.Range(lowPitchRange, highPitchRange);
         sound.Play(0);
+    }
+
+    private void PlayRandomChickenSound()
+    {
+        int rand = Random.Range(0, 600);
+
+        if (rand == 38)
+            PlaySound(Chicken1);
+
+        else if (rand == 98)
+            PlaySound(Chicken2);
     }
 }

@@ -900,6 +900,7 @@ GameObject:
   - component: {fileID: 459352114}
   - component: {fileID: 459352113}
   - component: {fileID: 459352115}
+  - component: {fileID: 459352116}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -948,13 +949,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MartijnScore: 0
-  RamonScore: 40
+  RamonScore: 0
   LuukScore: 0
   PetarScore: 0
   MScoreText: {fileID: 1118937470}
   RScoreText: {fileID: 374843738}
   LScoreText: {fileID: 526217105}
   PScoreText: {fileID: 1839025977}
+--- !u!114 &459352116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459352112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea96edcf5bb87fd4099b4dbef0324944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &526217103
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,7 +1101,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 30
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3250,7 +3263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb62196885ce773468dfa51076e71e11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brain: {fileID: 11400000, guid: 2d771f135e66b234a8f2db9cd54dcab0, type: 2}
+  brain: {fileID: 11400000, guid: 5acdd607bd73c2244907ce98033a046b, type: 2}
   availableWeapons:
   - {fileID: 11400000, guid: 34cd6ecec04f8c241beeb9be24d25ae7, type: 2}
   BulletSpawnPoint: {fileID: 865678362}

@@ -11,12 +11,11 @@ public class Weapon : ScriptableObject
     public float BulletSpread;
 
     public GameObject bulletPrefab;
-    
 
     public void Shoot(Transform pos, GameObject BulletSpawnPoint)
     {
         GameObject go = Instantiate(bulletPrefab, BulletSpawnPoint.transform.position, Quaternion.Euler(new Vector3(0, pos.transform.rotation.y * 135, 90)));
 
-        //SfxManager.instance.PlaySound(ShotPistol);
+        SfxManager.instance.PlaySound(SfxManager.instance.ShotPistol);
     }
 }
