@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime);
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
 
     private void OnTriggerEnter(Collider other)

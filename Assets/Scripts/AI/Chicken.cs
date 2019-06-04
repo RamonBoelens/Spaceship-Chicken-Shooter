@@ -91,6 +91,9 @@ public class Chicken : MonoBehaviour
     private void UpdateBrain()
     {
         brain.UpdateData(data);
+
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        //transform.rotation = Quaternion.Euler(new Vector3(0, transform.rotation.y, 0));
     }
 
     #endregion
@@ -175,6 +178,7 @@ public class Chicken : MonoBehaviour
     {
 
         health -= damage;
+        //Debug.Log(brain.name + " got hit! And has " + health + " health left!");
 
         if (health <= 0)
         {
