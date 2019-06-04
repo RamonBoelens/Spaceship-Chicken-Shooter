@@ -26,6 +26,19 @@ public class SfxManager : MonoBehaviour
     public AudioSource ShotLaser;
     public AudioSource ShotPistol;
 
+    public static SfxManager instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+
+        else
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
+    }
+
 
     //Play sound function. Only has one sound!
     public void PlaySound(AudioSource sound)

@@ -11,23 +11,12 @@ public class Weapon : ScriptableObject
     public float BulletSpread;
 
     public GameObject bulletPrefab;
+    
 
-    private bool allowFiring = true;
-
-    public void Shoot(Vector3 pos)
+    public void Shoot(Transform pos, GameObject BulletSpawnPoint)
     {
-        Debug.Log("Check Shoot");
+        GameObject go = Instantiate(bulletPrefab, BulletSpawnPoint.transform.position, Quaternion.Euler(new Vector3(0, pos.transform.rotation.y * 135, 90)));
 
-        if (allowFiring)
-        {
-            Debug.Log("Shoot");
-
-            allowFiring = false;
-
-            
-
-            GameObject go = Instantiate(bulletPrefab);
-            go.transform.position = pos;
-        }
+        //SfxManager.instance.PlaySound(ShotPistol);
     }
 }

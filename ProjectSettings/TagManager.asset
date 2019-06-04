@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Asteriods
   - Edge
+  - ChickenR
+  - ChickenM
+  - ChickenP
+  - ChickenL
   layers:
   - Default
   - TransparentFX

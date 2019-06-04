@@ -6,7 +6,7 @@ public class Asteriod : MonoBehaviour
 {
 
 
-    public void start()
+    public void Start()
     {
         asteriodManager.instance.Enroll(this);
     }

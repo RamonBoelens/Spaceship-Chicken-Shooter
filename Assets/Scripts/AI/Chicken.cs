@@ -22,6 +22,9 @@ public class Chicken : MonoBehaviour
 
     public List<Weapon> availableWeapons;
     public Weapon currentWeapon { get; private set; }
+    public GameObject BulletSpawnPoint;
+
+    private float cooldown = 1.0f;
 
 
     private void Start()
@@ -47,6 +50,8 @@ public class Chicken : MonoBehaviour
         GatherData();
         GatherTargets();
         UpdateBrain();
+
+        cooldown -= Time.deltaTime;
     }
 
     private void GatherData()
@@ -54,7 +59,7 @@ public class Chicken : MonoBehaviour
         data.me = MakeTarget(this);
     }
 
-    //Gives us a list of chickens we can actually see
+    //Gives us a list of robots we can actually see
     private void GatherTargets()
     {
         data.targets = FindObjectsOfType<Chicken>().Where(CanSee).Select(MakeTarget).ToArray();
@@ -157,6 +162,10 @@ public class Chicken : MonoBehaviour
 
     private void Shoot(bool usePrimary)
     {
-        currentWeapon.Shoot(transform.position);
+        if (cooldown < 0)
+        {
+            currentWeapon.Shoot(transform, BulletSpawnPoint);
+            cooldown = currentWeapon.FireRate;
+        }
     }
 }
