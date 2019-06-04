@@ -19,13 +19,29 @@ public class PetarBrain : BrainBase
 		int randomTime = Random.Range(15,40);
 
 		int timeToSwitch = 20 + currentTime;
+		//bool timeToRun = false;
+
+		
+
+		//void SixthSense()
+		//{
+			
+		//	for (int i= 0; i < 4; i++){
+				
+		//		if (Vector3.Distance(data.me.position, data.targets[i].position) < 6)
+		//		{
+		//			timeToRun = true;
+		//		} else
+		//		{
+		//			timeToRun = false;
+		//		}
+		//	}
+		//}
 
 
-		void PhaseOne()
-		{
-			lastData.MoveTo(lastData.targets[enemy]);
-			lastData.Shoot(true);
-		}
+
+
+
 
 
 
@@ -38,19 +54,25 @@ public class PetarBrain : BrainBase
 			lastData.Shoot(true);
 
 
+
 		}
 		else if (Vector3.Distance(data.me.position, data.targets[enemy].position) < 6f && data.me.health > 40)
 		{
 			lastData.Shoot(false);
 			lastData.LookAway(lastData.targets[enemy]);
-			lastData.ThrustForward(100);
-			Debug.Log("Going backwards)");
+			lastData.ThrustForward(10);
+			
 		}
 		else if (Vector3.Distance(data.me.position, data.targets[enemy].position) < 2f && data.me.health > 40)
 		{
 			lastData.Shoot(false);
 			lastData.LookAway(lastData.targets[enemy]);
-			lastData.ThrustForward(200);
+			lastData.ThrustForward(50);
+		} else if (data.me.health < 40)
+		{
+			lastData.Shoot(true);
+			lastData.LookAt(lastData.targets[enemy]);
+			lastData.MoveTo(lastData.targets[enemy]);
 		}
 
 		
