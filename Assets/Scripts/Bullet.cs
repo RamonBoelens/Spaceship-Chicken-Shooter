@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
     private float bulletSpeed = 17.5f;
+    private int bulletDamage = 25;
 
     private void Update()
     {
@@ -14,26 +14,21 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Edge")
-        {
-            Destroy(gameObject);
-        }
-
         if (other.tag == "ChickenM")
         {
-            Debug.Log("Bullet hit Martijn!");
+            GameManager.instance.CallDamageChicken(0, bulletDamage);
         }
         if (other.tag == "ChickenP")
         {
-            Debug.Log("Bullet hit Petar!");
+            GameManager.instance.CallDamageChicken(1, bulletDamage);
         }
         if (other.tag == "ChickenL")
         {
-            Debug.Log("Bullet hit Luuk!");
+            GameManager.instance.CallDamageChicken(3, bulletDamage);
         }
         if (other.tag == "ChickenR")
         {
-            Debug.Log("Bullet hit Ramon");
+            GameManager.instance.CallDamageChicken(2, bulletDamage);
         }
 
         Destroy(gameObject);

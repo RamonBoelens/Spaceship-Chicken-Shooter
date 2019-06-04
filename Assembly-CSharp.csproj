@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\_Rando Tut\Plugins\AI\BrainBaseRando.cs" />
     <Compile Include="Assets\_Rando Tut\Scripts\AI\Robot.cs" />
+    <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\Scripts\AI\Chicken.cs" />
     <Compile Include="Assets\Scripts\Asteriod.cs" />
     <Compile Include="Assets\Scripts\asteriodManager.cs" />

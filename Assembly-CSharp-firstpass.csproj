@@ -62,13 +62,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Plugins\AI\Brain.cs" />
     <Compile Include="Assets\Plugins\AI\BrainBase.cs" />
     <Compile Include="Assets\Plugins\AI\LuukBrain.cs" />
     <Compile Include="Assets\Plugins\AI\MartijnBrain.cs" />
     <Compile Include="Assets\Plugins\AI\PetarBrain.cs" />
     <Compile Include="Assets\Plugins\AI\RamonBrain.cs" />
-    <Compile Include="Assets\Plugins\AI\TestBrain.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Unity Stuff/Development Elective/Spaceship-Chicken-Shooter/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
