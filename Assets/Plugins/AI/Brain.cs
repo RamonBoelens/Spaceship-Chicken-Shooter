@@ -45,7 +45,6 @@ public class Brain : BrainBase
         lastData.LookAt(data.targets[0]);
         lastData.MoveTo(data.targets[0]);
         */
-
         if (Vector3.Distance(data.me.position, data.targets[0].position) > 4.0f)
         {
             lastData.LookAt(data.targets[0]);

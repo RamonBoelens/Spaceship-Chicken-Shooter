@@ -54,7 +54,7 @@ public class Chicken : MonoBehaviour
         data.me = MakeTarget(this);
     }
 
-    //Gives us a list of robots we can actually see
+    //Gives us a list of chickens we can actually see
     private void GatherTargets()
     {
         data.targets = FindObjectsOfType<Chicken>().Where(CanSee).Select(MakeTarget).ToArray();

@@ -24,6 +24,8 @@ public class MartijnBrain : BrainBase
         lastData = data;
         //lastData.ThrustForward(1);
         lastData.targets.OrderBy(t => t.health);
+        Debug.Log(lastData.me.health);
+        Debug.Log(lastData.targets[0].health);
 
         if (lastData.targets[0].position == lastData.me.position)
         {
