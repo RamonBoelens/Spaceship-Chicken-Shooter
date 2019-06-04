@@ -34,9 +34,10 @@ public class PetarBrain : BrainBase
 		if (Vector3.Distance(data.me.position, data.targets[enemy].position) > 4f)
 		{
 			lastData.MoveTo(lastData.targets[enemy]);
+			lastData.Shoot(true);
 		} else if (Vector3.Distance(data.me.position, data.targets[enemy].position) < 4f)
 		{
-			//lastData.BackOff(lastData.targets[enemy]);
+			lastData.Shoot(false);
 			lastData.LookAway(lastData.targets[enemy]);
 			lastData.ThrustForward(3);
 		}
@@ -52,9 +53,9 @@ public class PetarBrain : BrainBase
 			
 		}
 
-		Debug.Log(enemy);
-		Debug.Log(timeToSwitch);
-		Debug.Log(currentTime);
+		//Debug.Log(enemy);
+		//Debug.Log(timeToSwitch);
+		//Debug.Log(currentTime);
 
 
 		//Debug.Log(timeToSwitch);
