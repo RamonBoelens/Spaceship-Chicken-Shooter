@@ -36,7 +36,11 @@ public class MartijnBrain : BrainBase
         }
             
 
-         if (lastData.me.health < 25)
+         if (lastData.me.health < 25 && lastData.targets[0].position == lastData.me.position)
+        {
+            lastData.BackOff(lastData.targets[1]);
+        }
+        if (lastData.me.health < 25 && lastData.targets[0].position != lastData.me.position)
         {
             lastData.BackOff(lastData.targets[0]);
         }
