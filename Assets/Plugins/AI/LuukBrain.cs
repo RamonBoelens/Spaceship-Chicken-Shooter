@@ -13,6 +13,13 @@ public class LuukBrain : BrainBase
     private int TargetAmount;
     private int RandomizedTargetID;
 
+    private float GameTime;
+    private float PassTime;
+    private float TimeToPass;
+    private bool TimeBool;
+    private bool StartTiming;
+    private bool TimingCompleted;
+
     private bool Start;
 
     public override void UpdateData(BrainData data)
@@ -55,13 +62,31 @@ public class LuukBrain : BrainBase
             GetRandomTarget();
         }
 
-        //lastData.ThrustForward(1); 1 or 2 or even 3
-
-
-
         void GetRandomTarget()
         {
             RandomizedTargetID = UnityEngine.Random.Range(0, TargetAmount);
         }
+
+
+        GameTime = Time.time;
+        if (StartTiming && !TimeBool)
+        {
+            TimingCompleted = false;
+            TimeBool = true;
+            LogTimeToPass(1);
+        }
+        if (GameTime >= TimeToPass && TimeBool)
+        {
+            //Debug.Log("Second has passed");
+            TimeBool = false;
+            StartTiming = false;
+            TimingCompleted = true;
+        }
+        void LogTimeToPass(float PassTime)
+        {
+            //Debug.Log("Start passing");
+            TimeToPass = GameTime + PassTime;
+        }
+        // Figure out Music BPM & Time.time
     }
 }
