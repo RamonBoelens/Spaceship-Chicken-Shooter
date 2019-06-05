@@ -36,28 +36,26 @@ public class MartijnBrain : BrainBase
         }
             
 
-         if (lastData.me.health < 25 && lastData.targets[0].position == lastData.me.position)
+         if (lastData.me.health < 25 && lastData.targets[0].position == lastData.me.position && Vector3.Distance(data.me.position, data.targets[1].position) < 10.0f)
         {
             lastData.BackOff(lastData.targets[1]);
         }
-        if (lastData.me.health < 25 && lastData.targets[0].position != lastData.me.position)
+        if (lastData.me.health < 25 && lastData.targets[0].position != lastData.me.position && Vector3.Distance(data.me.position, data.targets[0].position) < 10.0f)
         {
             lastData.BackOff(lastData.targets[0]);
         }
 
-        if (lastData.targets[0].position == lastData.me.position)
+        if (lastData.targets[0].position == lastData.me.position && Vector3.Distance(data.me.position, data.targets[1].position) < 10.0f)
             {
-            if (Vector3.Distance(data.me.position, data.targets[1].position) < 10.0f)
-                {
+                
                 lastData.Shoot(true);
-                }
+                
             }
-        if (lastData.targets[0].position != lastData.me.position)
+        if (lastData.targets[0].position != lastData.me.position && Vector3.Distance(data.me.position, data.targets[0].position) < 10.0f)
         {
-            if (Vector3.Distance(data.me.position, data.targets[0].position) < 10.0f)
-            {
+            
                 lastData.Shoot(true);
-            }
+            
         }
 
     }
