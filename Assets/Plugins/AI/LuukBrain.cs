@@ -20,7 +20,6 @@ public class LuukBrain : BrainBase
         /*
          * Actions Avaliable:
          * 
-           
             public Action<int> ThrustForward;
             public Action<bool, int> Rotate;
             public Action<Target> LookAt;
@@ -43,12 +42,17 @@ public class LuukBrain : BrainBase
             GetRandomTarget();
             Start = true;
         }
-
+        
         if (Start)
         {
             lastData.LookAt(lastData.targets[RandomizedTargetID]);
             lastData.MoveTo(lastData.targets[RandomizedTargetID]);
             lastData.Shoot(true);
+        }
+
+        if (!lastData.targets[RandomizedTargetID].alive)
+        {
+            GetRandomTarget();
         }
 
         //lastData.ThrustForward(1); 1 or 2 or even 3
