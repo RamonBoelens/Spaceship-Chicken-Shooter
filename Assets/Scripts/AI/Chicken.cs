@@ -130,6 +130,7 @@ public class Chicken : MonoBehaviour
         float step = rotationSpeed * Time.deltaTime;
 
         Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
+        newDir.y = 0.0f;
         Debug.DrawRay(transform.position, newDir, Color.red);
 
         transform.rotation = Quaternion.LookRotation(newDir);
@@ -142,6 +143,7 @@ public class Chicken : MonoBehaviour
         float step = rotationSpeed * Time.deltaTime;
 
         Vector3 newDir = Vector3.RotateTowards(transform.forward, -targetDir, step, 0.0f);
+        newDir.y = 0.0f;
         Debug.DrawRay(transform.position, newDir, Color.red);
 
         transform.rotation = Quaternion.LookRotation(newDir);
