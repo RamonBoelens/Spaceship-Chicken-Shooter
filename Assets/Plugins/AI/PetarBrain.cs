@@ -16,9 +16,10 @@ public class PetarBrain : BrainBase
 
 		int enemy = 0;
 		int currentTime = 0;
+		int offset = 20;
 		int randomTime = Random.Range(15,40);
 
-		int timeToSwitch = 20 + currentTime;
+		int timeToSwitch = offset + currentTime;
 		//bool timeToRun = false;
 
 		
@@ -80,9 +81,15 @@ public class PetarBrain : BrainBase
 			if (Time.time >= timeToSwitch)
 		{
 			enemy = enemy + 1;
+			offset = offset + 20;
 			currentTime = (int) Time.time;
 			lastData.LookAt(lastData.targets[enemy]);
 			
+		}
+
+			if (enemy > 3)
+		{
+			enemy = 0;
 		}
 
 		//Debug.Log(enemy);
