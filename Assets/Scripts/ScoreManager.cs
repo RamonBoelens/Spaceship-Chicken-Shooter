@@ -40,22 +40,22 @@ public class ScoreManager : MonoBehaviour
     
     public void MartijnScoring()
     {
-        MartijnScore += 1;
+        MartijnScore -= 1;
         MScoreText.text = MartijnScore.ToString();
 }
     public void LuukScoring()
     {
-        LuukScore += 1;
+        LuukScore -= 1;
         LScoreText.text = LuukScore.ToString();
     }
     public void RamonScoring()
     {
-        RamonScore += 1;
+        RamonScore -= 1;
         RScoreText.text = RamonScore.ToString();
     }
     public void PetarScoring()
     {
-        PetarScore += 1;
+        PetarScore -= 1;
         PScoreText.text = PetarScore.ToString();
     }
 

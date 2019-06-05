@@ -195,7 +195,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.075
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1145,10 +1145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805453a729cbd61499100a8c637de8bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MartijnScore: 0
-  RamonScore: 0
-  LuukScore: 0
-  PetarScore: 0
+  MartijnScore: 25
+  RamonScore: 25
+  LuukScore: 25
+  PetarScore: 25
   MScoreText: {fileID: 1118937470}
   RScoreText: {fileID: 374843738}
   LScoreText: {fileID: 526217105}
@@ -2403,7 +2403,7 @@ GameObject:
   - component: {fileID: 1089271807}
   m_Layer: 0
   m_Name: Chicken Luuk
-  m_TagString: ChickenP
+  m_TagString: ChickenL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

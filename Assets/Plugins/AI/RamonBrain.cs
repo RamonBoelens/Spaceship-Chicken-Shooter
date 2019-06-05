@@ -7,6 +7,8 @@ public class RamonBrain : BrainBase
 {
     private BrainData lastData;
 
+    private int target = 2;
+
     public override void UpdateData(BrainData data)
     {
         /*
@@ -32,16 +34,16 @@ public class RamonBrain : BrainBase
 
         else
         {
-            if (Vector3.Distance(data.me.position, data.targets[0].position) > 15.0f)
+            if (Vector3.Distance(data.me.position, data.targets[target].position) > 8.0f)
             {
-                lastData.LookAt(data.targets[0]);
-                lastData.MoveTo(data.targets[0]);
+                lastData.LookAt(data.targets[target]);
+                lastData.MoveTo(data.targets[target]);
 
                 lastData.Shoot(true);
             }
             else
             {
-                lastData.BackOff(data.targets[0]);
+                lastData.BackOff(data.targets[target]);
             }
         }
     }

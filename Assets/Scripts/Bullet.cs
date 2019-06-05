@@ -21,15 +21,15 @@ public class Bullet : MonoBehaviour
         }
         if (other.tag == "ChickenP")
         {
-            GameManager.instance.CallDamageChicken(1, bulletDamage);
+            GameManager.instance.CallDamageChicken(2, bulletDamage);
         }
         if (other.tag == "ChickenL")
         {
-            GameManager.instance.CallDamageChicken(3, bulletDamage);
+            GameManager.instance.CallDamageChicken(1, bulletDamage);
         }
         if (other.tag == "ChickenR")
         {
-            GameManager.instance.CallDamageChicken(2, bulletDamage);
+            GameManager.instance.CallDamageChicken(3, bulletDamage);
         }
 
         Destroy(gameObject);

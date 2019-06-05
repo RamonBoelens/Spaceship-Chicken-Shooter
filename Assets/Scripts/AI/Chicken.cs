@@ -176,15 +176,25 @@ public class Chicken : MonoBehaviour
 
     public void DamageChicken(int damage)
     {
-
         health -= damage;
-        //Debug.Log(brain.name + " got hit! And has " + health + " health left!");
 
         if (health <= 0)
         {
             transform.position = spawnLocation;
             health = 100;
             SfxManager.instance.PlaySound(SfxManager.instance.Death);
+
+            if (brain.name == "Martijn Brain AI")
+                ScoreManager.instance.MartijnScoring();
+
+            else if (brain.name == "Petar Brain AI")
+                ScoreManager.instance.PetarScoring();
+
+            else if (brain.name == "Luuk Brain AI")
+                ScoreManager.instance.LuukScoring();
+
+            else if (brain.name == "Ramon Brain AI")
+                ScoreManager.instance.RamonScoring();
         }
         else
         {
