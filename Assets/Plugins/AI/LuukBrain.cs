@@ -19,6 +19,7 @@ public class LuukBrain : BrainBase
     private bool TimeBool;
     private bool StartTiming;
     private bool TimingCompleted;
+    private bool FreeFire;
 
     private bool Start;
 
@@ -41,12 +42,11 @@ public class LuukBrain : BrainBase
         {
             TargetAmount++;
         }
-        //Debug.Log("Targets " + TargetAmount);
-
 
         if (!Start)
         {
             GetRandomTarget();
+            FreeFire = true;
             Start = true;
         }
         
@@ -54,7 +54,14 @@ public class LuukBrain : BrainBase
         {
             lastData.LookAt(lastData.targets[RandomizedTargetID]);
             lastData.MoveTo(lastData.targets[RandomizedTargetID]);
-            lastData.Shoot(true);
+            if (FreeFire)
+            {
+                lastData.Shoot(true);
+            }
+            else
+            {
+                lastData.Shoot(false);
+            }
         }
 
         if (!lastData.targets[RandomizedTargetID].alive)
@@ -62,31 +69,41 @@ public class LuukBrain : BrainBase
             GetRandomTarget();
         }
 
+        FreeFire = false;
+
+        if (lastData.me.health < 50)
+        {
+            lastData.BackOff(lastData.targets[RandomizedTargetID]);
+            FreeFire = false;
+            GetRandomTarget();
+            StartTiming = true;
+            if (TimingCompleted)
+            {
+                FreeFire = true;
+            }
+        }
+
         void GetRandomTarget()
         {
             RandomizedTargetID = UnityEngine.Random.Range(0, TargetAmount);
         }
-
 
         GameTime = Time.time;
         if (StartTiming && !TimeBool)
         {
             TimingCompleted = false;
             TimeBool = true;
-            LogTimeToPass(1);
+            LogTimeToPass(2);
         }
         if (GameTime >= TimeToPass && TimeBool)
         {
-            //Debug.Log("Second has passed");
             TimeBool = false;
             StartTiming = false;
             TimingCompleted = true;
         }
         void LogTimeToPass(float PassTime)
         {
-            //Debug.Log("Start passing");
             TimeToPass = GameTime + PassTime;
         }
-        // Figure out Music BPM & Time.time
     }
 }
