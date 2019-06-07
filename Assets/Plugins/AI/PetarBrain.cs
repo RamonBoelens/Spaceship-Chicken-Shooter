@@ -20,24 +20,28 @@ public class PetarBrain : BrainBase
 		int randomTime = Random.Range(15,40);
 
 		int timeToSwitch = offset + currentTime;
-		//bool timeToRun = false;
+
+		// bool timeToRun = false;
 
 		
 
-		//void SixthSense()
-		//{
+		//	Was supposed to check if all enemies around the player were a certain distance away
+		//  for the run away mechanic, but gave errors
+		
+		//	void SixthSense()
+		//	{
 			
-		//	for (int i= 0; i < 4; i++){
+		//		for (int i= 0; i < 4; i++){
 				
-		//		if (Vector3.Distance(data.me.position, data.targets[i].position) < 6)
-		//		{
-		//			timeToRun = true;
-		//		} else
-		//		{
-		//			timeToRun = false;
+		//			if (Vector3.Distance(data.me.position, data.targets[i].position) < 6)
+		//			{
+		//				timeToRun = true;
+		//			} else
+		//			{
+		//				timeToRun = false;
+		//			}
 		//		}
 		//	}
-		//}
 
 
 
@@ -47,29 +51,30 @@ public class PetarBrain : BrainBase
 
 
 
-
-		if (Vector3.Distance(data.me.position, data.targets[enemy].position) > 6f && data.me.health > 40)
+		
+		if (Vector3.Distance(data.me.position, data.targets[enemy].position) > 6f && data.me.health > 40)					// If over 40% HP and target is far -> Look and shoot
 		{
 			lastData.LookAt(lastData.targets[enemy]);
-			//lastData.ThrustForward(2);
 			lastData.Shoot(true);
 
 
 
 		}
-		else if (Vector3.Distance(data.me.position, data.targets[enemy].position) < 6f && data.me.health > 40)
+		else if (Vector3.Distance(data.me.position, data.targets[enemy].position) < 6f && data.me.health > 40)				// If over 40% HP and target is close -> Stop shooting and run
 		{
 			lastData.Shoot(false);
 			lastData.LookAway(lastData.targets[enemy]);
 			lastData.ThrustForward(10);
 			
 		}
-		else if (Vector3.Distance(data.me.position, data.targets[enemy].position) < 2f && data.me.health > 40)
+		else if (Vector3.Distance(data.me.position, data.targets[enemy].position) < 2f && data.me.health > 40)				// If over 40% HP and target is VERY close -> Stop shooting and 
+																															// bolt out of there
 		{
 			lastData.Shoot(false);
 			lastData.LookAway(lastData.targets[enemy]);
 			lastData.ThrustForward(50);
-		} else if (data.me.health < 40)
+		}
+		else if (data.me.health < 40)																						// If less than 40% HP -> Go rambo on the target
 		{
 			lastData.Shoot(true);
 			lastData.LookAt(lastData.targets[enemy]);
@@ -78,7 +83,7 @@ public class PetarBrain : BrainBase
 
 		
 
-			if (Time.time >= timeToSwitch)
+			if (Time.time >= timeToSwitch)																					// Picks random target every couple of seconds
 		{
 			enemy = enemy + 1;
 			offset = offset + 20;
@@ -92,12 +97,6 @@ public class PetarBrain : BrainBase
 			enemy = 0;
 		}
 
-		//Debug.Log(enemy);
-		//Debug.Log(timeToSwitch);
-		//Debug.Log(currentTime);
-
-
-		//Debug.Log(timeToSwitch);
 
 
 
