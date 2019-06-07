@@ -27,21 +27,21 @@ public class MartijnBrain : BrainBase
         // After this using Linq order method to sort on health
         CurrentTargets = lastData.targets;
         CurrentTargets = CurrentTargets.OrderBy(x => x.health).ToArray();
-
-
+        // Go forwards
+        lastData.ThrustForward(1);
 
 
         // using location of itself and the position of the first in the new array to see if they are realy close to itself to prevent targeting itself
-        // after this moving towards this enemy
+        // after this looking towards this enemy
         if (Vector3.Distance(data.me.position, CurrentTargets[0].position) < 2.0f)
         {
-  
-            lastData.MoveTo(CurrentTargets[1]);
+
+            lastData.LookAt (CurrentTargets[1]);
         }
 
         else if  (Vector3.Distance(data.me.position, CurrentTargets[0].position) > 2.0f)
         {
-            lastData.MoveTo(CurrentTargets[0]);
+            lastData.LookAt(CurrentTargets[0]);
         }
             
         // Same way of checking again and if low health backing off if its close 
