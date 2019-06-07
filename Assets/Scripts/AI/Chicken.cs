@@ -213,6 +213,8 @@ public class Chicken : MonoBehaviour
             else
                 SfxManager.instance.PlaySound(SfxManager.instance.Hit2);
         }
+
+        GameManager.instance.UpdateHealthText();
     }
 
     private void SetSpawnLocation()
