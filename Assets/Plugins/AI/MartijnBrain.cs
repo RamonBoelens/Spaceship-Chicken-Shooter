@@ -25,7 +25,7 @@ public class MartijnBrain : BrainBase
         lastData = data;
         lastData.ThrustForward(1);
         lastData.targets = lastData.targets.OrderBy(x => x.health).ToArray();
-        Debug.Log()
+        //Debug.Log()
         
         
 

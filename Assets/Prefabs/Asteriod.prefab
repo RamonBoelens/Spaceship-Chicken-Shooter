@@ -13,9 +13,7 @@ GameObject:
   - component: {fileID: 23521407151136236}
   - component: {fileID: 135746856511397784}
   - component: {fileID: 54281229787722722}
-  - component: {fileID: 114113273485727318}
   - component: {fileID: 8975538856423158657}
-  - component: {fileID: 135378873514709780}
   m_Layer: 0
   m_Name: Asteriod
   m_TagString: Asteriods
@@ -111,19 +109,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &114113273485727318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984552020322528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ad8579d849c6fc4c9b8dca71a0f102d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thrust: 2000
 --- !u!114 &8975538856423158657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,16 +121,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccee76fd3329ea04aa2bd11aec226165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &135378873514709780
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984552020322528}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  speed: 9.97
