@@ -9,7 +9,12 @@ public class SceneSwitcher : MonoBehaviour
 {
     public void LoadThisLevel(string sceneName)
 	{
+		Time.timeScale = 1f;
 		SceneManager.LoadScene(sceneName);
 	}
     
+	public void EndGame()
+	{
+		Application.Quit();
+	}
 }
