@@ -7,7 +7,7 @@ using System.Linq;
 public class MartijnBrain : BrainBase
 {
     private BrainData lastData;
-
+    private Target[] CurrentTargets;
     public override void UpdateData(BrainData data)
     {
         /*
@@ -21,44 +21,47 @@ public class MartijnBrain : BrainBase
             public Action<Target> LookAway;
             public Action<Target> BackOff;
          */
-       
+         
         lastData = data;
-        lastData.ThrustForward(1);
-        lastData.targets = lastData.targets.OrderBy(x => x.health).ToArray();
-        //Debug.Log()
-        
-        
+        // Converts The all Target array into a new array to not edit the array for everyone
+        // After this using Linq order method to sort on health
+        CurrentTargets = lastData.targets;
+        CurrentTargets = CurrentTargets.OrderBy(x => x.health).ToArray();
 
 
 
 
-        if (lastData.targets[0].position == lastData.me.position)
+        // using location of itself and the position of the first in the new array to see if they are realy close to itself to prevent targeting itself
+        // after this moving towards this enemy
+        if (Vector3.Distance(data.me.position, CurrentTargets[0].position) < 2.0f)
         {
-            lastData.MoveTo(lastData.targets[1]);
+  
+            lastData.MoveTo(CurrentTargets[1]);
         }
 
-        else if  (lastData.targets[0].position != lastData.me.position)
+        else if  (Vector3.Distance(data.me.position, CurrentTargets[0].position) > 2.0f)
         {
-            lastData.MoveTo(lastData.targets[0]);
+            lastData.MoveTo(CurrentTargets[0]);
         }
             
-
-         if (lastData.me.health < 25 && lastData.targets[0].position == lastData.me.position && Vector3.Distance(data.me.position, data.targets[1].position) < 10.0f)
+        // Same way of checking again and if low health backing off if its close 
+         if (lastData.me.health < 25 && Vector3.Distance(data.me.position, CurrentTargets[0].position) < 2.0f && Vector3.Distance(data.me.position, CurrentTargets[1].position) < 10.0f)
         {
-            lastData.BackOff(lastData.targets[1]);
+            Debug.Log("useles");
+            lastData.BackOff(CurrentTargets[1]);
         }
-        if (lastData.me.health < 25 && lastData.targets[0].position != lastData.me.position && Vector3.Distance(data.me.position, data.targets[0].position) < 10.0f)
+        if (lastData.me.health < 25 && Vector3.Distance(data.me.position, CurrentTargets[0].position) > 2.0f && Vector3.Distance(data.me.position, CurrentTargets[0].position) < 10.0f)
         {
-            lastData.BackOff(lastData.targets[0]);
+            lastData.BackOff(CurrentTargets[0]);
         }
-
-        if (lastData.targets[0].position == lastData.me.position && Vector3.Distance(data.me.position, data.targets[1].position) < 10.0f)
+            // only shooting if its close
+        if ( Vector3.Distance(data.me.position, CurrentTargets[1].position) < 10.0f)
             {
                 
                 lastData.Shoot(true);
                 
             }
-        if (lastData.targets[0].position != lastData.me.position && Vector3.Distance(data.me.position, data.targets[0].position) < 10.0f)
+        if (CurrentTargets[0].position != lastData.me.position && Vector3.Distance(data.me.position, CurrentTargets[0].position) < 10.0f)
         {
             
                 lastData.Shoot(true);
