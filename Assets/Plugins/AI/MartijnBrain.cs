@@ -21,18 +21,25 @@ public class MartijnBrain : BrainBase
             public Action<Target> LookAway;
             public Action<Target> BackOff;
          */
+       
         lastData = data;
         lastData.ThrustForward(1);
-        lastData.targets.OrderBy(t => t.health);
+        lastData.targets = lastData.targets.OrderBy(x => x.health).ToArray();
+        Debug.Log()
+        
+        
+
+
+
 
         if (lastData.targets[0].position == lastData.me.position)
         {
-            lastData.LookAt(lastData.targets[1]);
+            lastData.MoveTo(lastData.targets[1]);
         }
 
         else if  (lastData.targets[0].position != lastData.me.position)
         {
-            lastData.LookAt(lastData.targets[0]);
+            lastData.MoveTo(lastData.targets[0]);
         }
             
 
