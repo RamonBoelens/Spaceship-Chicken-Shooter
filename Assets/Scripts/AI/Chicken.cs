@@ -44,6 +44,7 @@ public class Chicken : MonoBehaviour
         data.MoveTo = MoveTo;
         data.BackOff = BackOff;
         data.Shoot = Shoot;
+        data.MoveToLocation = MoveToLocation;
 
         GameManager.instance.AssignChickens(this);
 
@@ -126,27 +127,13 @@ public class Chicken : MonoBehaviour
     private void LookAt(Target target)
     {
         Vector3 targetDir = target.position - transform.position;
-
-        float step = rotationSpeed * Time.deltaTime;
-
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
-        newDir.y = 0.0f;
-        Debug.DrawRay(transform.position, newDir, Color.red);
-
-        transform.rotation = Quaternion.LookRotation(newDir);
+        Look(targetDir);
     }
     
     private void LookAway(Target target)
     {
         Vector3 targetDir = target.position - transform.position;
-
-        float step = rotationSpeed * Time.deltaTime;
-
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, -targetDir, step, 0.0f);
-        newDir.y = 0.0f;
-        Debug.DrawRay(transform.position, newDir, Color.red);
-
-        transform.rotation = Quaternion.LookRotation(newDir);
+        Look(-targetDir);
     }
 
     private void MoveTo(Target target)
@@ -154,11 +141,30 @@ public class Chicken : MonoBehaviour
         LookAt(target);
 
         if (Vector3.Distance(transform.position, target.position) < 0.001f)
-        {
             return;
-        }
 
         rb.AddForce(transform.forward * thrust);
+    }
+
+    private void MoveToLocation(Vector3 location)
+    {
+        Vector3 targetDir = location - transform.position;
+        Look(targetDir);
+
+        if (Vector3.Distance(transform.position, location) < 0.001f)
+            return;
+
+        rb.AddForce(transform.forward * thrust);
+    }
+
+    private void Look(Vector3 targetLocation)
+    {
+        float step = rotationSpeed * Time.deltaTime;
+
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetLocation, step, 0.0f);
+        newDir.y = 0.0f;
+
+        transform.rotation = Quaternion.LookRotation(newDir);
     }
 
     private void BackOff(Target target)

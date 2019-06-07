@@ -26,6 +26,7 @@ public struct BrainData
     public Action<Target> LookAway;
     public Action<Target> BackOff;
     public Action<bool> Shoot;
+    public Action<Vector3> MoveToLocation;
 
     // Information about the chickens
     public Target me;
